@@ -45,11 +45,10 @@ class MyQueue:
             else:
                 self.copy.push(self.main.top.value)
             self.main.pull()
-        current = self.copy.top
-        while current:
-            self.main.push(current.value)
+
+        while self.copy.top:
+            self.main.push(self.copy.top.value)
             self.copy.pull()
-            current = current.next
 
         return value
 
@@ -60,25 +59,27 @@ class MyQueue:
                 value = self.main.top.value
             self.copy.push(self.main.top.value)
             self.main.pull()
-        current = self.copy.top
-        while current:
-            self.main.push(current.value)
+
+        while self.copy.top:
+            self.main.push(self.copy.top.value)
             self.copy.pull()
-            current = current.next
 
         return value
 
-    # def empty(self) -> bool:
+    def empty(self) -> bool:
+        return self.main.top is None
 
 # Your MyQueue object will be instantiated and called as such:
+# MyQueue","push","push","push","push","pop","push","pop","pop","pop","pop"]
+# [[],[1],[2],[3],[4],[],[5],[],[],[],[]]
 obj = MyQueue()
 obj.push(1)
 obj.push(2)
 obj.push(3)
 obj.push(4)
-param_2 = obj.pop()
-param_1 = obj.peek()
-# param_2 = obj.pop()
-print(param_1)
-# param_3 = obj.peek()
-# param_4 = obj.empty()
+print(obj.pop())
+obj.push(5)
+print(obj.pop())
+print(obj.pop())
+print(obj.pop())
+print(obj.pop())
