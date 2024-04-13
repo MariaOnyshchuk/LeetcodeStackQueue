@@ -53,8 +53,20 @@ class MyQueue:
 
         return value
 
-    # def peek(self) -> int:
-        
+    def peek(self) -> int:
+        value = None
+        while self.main.top:
+            if not self.main.top.next:
+                value = self.main.top.value
+            self.copy.push(self.main.top.value)
+            self.main.pull()
+        current = self.copy.top
+        while current:
+            self.main.push(current.value)
+            self.copy.pull()
+            current = current.next
+
+        return value
 
     # def empty(self) -> bool:
 
@@ -64,9 +76,9 @@ obj.push(1)
 obj.push(2)
 obj.push(3)
 obj.push(4)
-param_1 = obj.pop()
 param_2 = obj.pop()
-param_2 = obj.pop()
-print(param_2)
+param_1 = obj.peek()
+# param_2 = obj.pop()
+print(param_1)
 # param_3 = obj.peek()
 # param_4 = obj.empty()
