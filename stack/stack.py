@@ -16,8 +16,9 @@ class Stack:
         node = Node(value)
         if not self.top:
             self.top = node
-        node.next = self.top
-        self.top = node
+        else:
+            node.next = self.top
+            self.top = node
 
     def pull(self):
         '''pull node'''
@@ -25,3 +26,14 @@ class Stack:
             node = self.top
             self.top = self.top.next
             node.next = None
+
+# my_stack = Stack()
+
+# el1 = 1
+# el2 = 2
+# el3 = 3
+# my_stack.push(el1)
+# my_stack.push(el2)
+# my_stack.push(el3)
+# my_stack.pull()
+# my_stack.pull()
