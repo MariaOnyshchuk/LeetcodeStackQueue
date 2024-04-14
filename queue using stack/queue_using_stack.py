@@ -1,3 +1,5 @@
+'''queue using stack'''
+
 class Node:
     '''class node'''
     def __init__(self, value):
@@ -31,13 +33,14 @@ class MyQueue:
     def __init__(self):
         '''init'''
         self.main = Stack()
-        self.copy = Stack()        
+        self.copy = Stack()
 
     def push(self, x: int) -> None:
         '''push node to queue'''
         self.main.push(x)
 
     def pop(self) -> int:
+        '''pop out of queue'''
         value = None
         while self.main.top:
             if not self.main.top.next:
@@ -68,18 +71,3 @@ class MyQueue:
 
     def empty(self) -> bool:
         return self.main.top is None
-
-# Your MyQueue object will be instantiated and called as such:
-# MyQueue","push","push","push","push","pop","push","pop","pop","pop","pop"]
-# [[],[1],[2],[3],[4],[],[5],[],[],[],[]]
-obj = MyQueue()
-obj.push(1)
-obj.push(2)
-obj.push(3)
-obj.push(4)
-print(obj.pop())
-obj.push(5)
-print(obj.pop())
-print(obj.pop())
-print(obj.pop())
-print(obj.pop())
